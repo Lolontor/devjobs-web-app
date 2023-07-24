@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <div class="title_bar">
+          <img src="{% static 'assets/desktop/logo.svg' %}" alt="" />
+          <div class="toggle_items">
+            <img src="{% static 'assets/desktop/icon-sun.svg' %}" alt="" />
+            <div class="toggle_btn js_toggle_btn"></div>
+            <img src="{% static 'assets/desktop/icon-moon.svg' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <form action="" class="form">
+        <div class="search">
+          <img src="{% static 'assets/desktop/icon-search.svg' %}" alt="">
+          <input
+            type="text"
+            placeholder="Filter by title, companies, expertise"
+          />
+        </div>
+        <div class="search">
+          <img src="{% static 'assets/desktop/icon-location.svg' %}" alt="">
+          <input type="text" placeholder="Filter by location" />
+        </div>
+        <div class="search">
+          <input type="checkbox" name="" id="" />
+          <p>Full Time Only</p>
+        </div>
+        <input type="submit" value="Search" class="button button_one" />
+      </form>
+      <div class="content js-content">
+        {% for job in data %}
+        <a href="content/{{job.id}}">
+          <div class="job_card js_card">
+              <img src="{{job.logo}}" alt="" style = "background-color : {{job.logoBackground}}"/>
+              <div class="description">
+                <span class="time_posted">{{job.postedAt}}</span>
+                <span>&#8226;</span>
+                <span class="job_description">{{job.contract}}</span>
+              </div>
+              <p class="job_title large_bold_text">{{job.position}}</p>
+              <p class="company">{{job.company}}</p>
+              <p class="country">{{job.location}}</p>
+            </div>
+            </a>
+        {% endfor %}    
+      </div>
+      <button class="button button_one center_btn">Load More</button>
+    </main>
+    <script src="{% static '/js/app.js' %}"></script>
+  </body>
+</html>

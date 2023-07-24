@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>devjobs</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <div class="title_bar">
+          <img src="{% static 'assets/desktop/logo.svg' %}" alt="" />
+          <div class="toggle_items">
+            <img src="{% static 'assets/desktop/icon-sun.svg' %}" alt="" />
+            <div class="toggle_btn js_toggle_btn"></div>
+            <img src="{% static 'assets/desktop/icon-moon.svg' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main_content">
+      <section class="company_info">
+        <img src="{{job.logo}}" alt="" style="background-color: {{job.logoBackground}};"/>
+        <div class="company_details">
+          <div>
+            <h2>{{job.company}}</h2>
+            <p class="small_light_text">{{job.website}}</p>
+          </div>
+          <button class="button button_two"><a href="{{job.website}}">Company Site</a></button>
+        </div>
+      </section>
+      <section class="job_requirement">
+        <div class="employer_details">
+          <div>
+            <div class="description">
+              <span class="time_posted">{{job.postedAt}}</span>
+              <span>&#8226;</span>
+              <span class="job_description">{{job.contract}}</span>
+            </div>
+            <p class="job_title">{{job.position}}</p>
+            <p class="country">{{job.location}}</p>
+          </div>
+          <button class="button button_one"><a href="{{job.apply}}">Apply Now</a></button>
+        </div>
+        <div class="job_introduction">
+          <p class="small_light_text">{{job.description}}</p>
+        </div>
+        <div class="detailed_job_requirement">
+          <h3 class="mg_tb">Requirement</h3>
+          <p class="small_light_text">
+            {{job.requirements.content}}
+            <ul class="small_light_text">
+              {% for item in job.requirements.items%}
+              <li>{{item}}</li>
+              {% endfor %}
+            </ul>
+          </p>
+        </div>
+        <div class="job_todo">
+          <h3 class="mg_tb">What You Will Do</h3>
+          <p class="small_light_text">
+            {{job.role.content}}
+            <ol class="small_light_text">
+              {% for item in job.role.items%}
+              <li>{{item}}</li>
+              {% endfor %}
+            </ol>
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <h3>{{job.position}}</h3>
+        <p class="small_light_text">So Digital Inc</p>
+      </div>
+      <button class="apply_btn js-apply-btn button button_one">
+        <a href="{{job.apply}}">Apply Now</a>
+      </button>
+    </footer>
+    <script src="{% static '/js/app.js' %}"></script>
+  </body>
+</html>
