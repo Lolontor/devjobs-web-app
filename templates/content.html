@@ -12,7 +12,7 @@
     <header>
       <div class="top">
         <div class="title_bar">
-          <img src="{% static 'assets/desktop/logo.svg' %}" alt="" />
+          <a href="{% url 'index' %}"><img src="{% static 'assets/desktop/logo.svg' %}" alt="" /></a>
           <div class="toggle_items">
             <img src="{% static 'assets/desktop/icon-sun.svg' %}" alt="" />
             <div class="toggle_btn js_toggle_btn"></div>
@@ -26,7 +26,7 @@
         <img src="{{job.logo}}" alt="" style="background-color: {{job.logoBackground}};"/>
         <div class="company_details">
           <div>
-            <h2>{{job.company}}</h2>
+            <h3 class="h3">{{job.company}}</h3>
             <p class="small_light_text">{{job.website}}</p>
           </div>
           <button class="button button_two"><a href="{{job.website}}">Company Site</a></button>
@@ -40,7 +40,7 @@
               <span>&#8226;</span>
               <span class="job_description">{{job.contract}}</span>
             </div>
-            <p class="job_title">{{job.position}}</p>
+            <h3 class="job_title">{{job.position}}</h3>
             <p class="country">{{job.location}}</p>
           </div>
           <button class="button button_one"><a href="{{job.apply}}">Apply Now</a></button>
@@ -60,7 +60,7 @@
           </p>
         </div>
         <div class="job_todo">
-          <h3 class="mg_tb">What You Will Do</h3>
+          <h3 class="mg_tb h3">What You Will Do</h3>
           <p class="small_light_text">
             {{job.role.content}}
             <ol class="small_light_text">
@@ -74,13 +74,13 @@
     </main>
     <footer>
       <div>
-        <h3>{{job.position}}</h3>
+        <h3 class="h3">{{job.position}}</h3>
         <p class="small_light_text">So Digital Inc</p>
       </div>
       <button class="apply_btn js-apply-btn button button_one">
         <a href="{{job.apply}}">Apply Now</a>
       </button>
     </footer>
-    <script src="{% static '/js/app.js' %}"></script>
+    <script src="{% static '/js/content.js' %}"></script>
   </body>
 </html>

@@ -84,6 +84,10 @@
   margin: .5rem 0;
 }
 
+h3.dark {
+  color: var(--white);
+}
+
 
 /* body  */
 body{
