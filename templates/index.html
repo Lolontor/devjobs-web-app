@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
   </head>
   <body>
+    <div class="overlay"></div>
     <header>
       <div class="top">
         <div class="title_bar">
@@ -23,24 +24,61 @@
       </div>
     </header>
     <main>
-      <form action="" class="form">
-        <div class="search">
-          <img src="{% static 'assets/desktop/icon-search.svg' %}" alt="" />
+      <!-- desktop and tablet search form  -->
+      <form action="" class="form desktop-form">
+        <div class="sub-input">
+          <img
+            src="{% static 'assets/desktop/icon-search.svg' %}"
+            alt="search icon"
+          />
           <input
             type="text"
             placeholder="Filter by title, companies, expertise"
           />
         </div>
-        <div class="search">
+        <div class="sub-input">
           <img src="{% static 'assets/desktop/icon-location.svg' %}" alt="" />
           <input type="text" placeholder="Filter by location" />
         </div>
-        <div class="search">
-          <input type="checkbox" name="" id="" />
-          <p>Full Time Only</p>
-        </div>
-        <input type="submit" value="Search" class="button button_one" />
+        <label for="d-checkbox" class="checkbox-label">
+          <input type="checkbox" name="" id="d-checkbox" />
+          Full Time Only
+          <input type="submit" value="Search" class="button button_one" />
+        </label>
       </form>
+      <!-- mobile search form  -->
+      <form action="" class="form mobile-form">
+        <div>
+          <input type="text" placeholder="Enter job desc..." />
+          <img
+            src="{% static 'assets/mobile/icon-filter.svg'%}"
+            alt="filter icon"
+            class="js-filter-btn"
+          />
+          <div class="search-logo">
+            <label for="m-search-btn">
+              <img src="{% static 'assets/desktop/icon-search.svg' %}" alt="" />
+              <input type="submit" value="search" id="m-search-btn" />
+            </label>
+          </div>
+        </div>
+        <!-- modal div  -->
+        <div class="search-modal hidden">
+          <div>
+            <img
+              src="{% static 'assets/desktop/icon-location.svg' %}"
+              alt="location icon"
+            />
+            <input type="text" placeholder="Filter by location" />
+          </div>
+          <label for="m-checkbox">
+            <input type="checkbox" name="" id="m-checkbox" />
+            Full Time Only
+          </label>
+          <input type="submit" value="Search" class="button button_one" />
+        </div>
+      </form>
+      <!-- rendering list of devjobs  -->
       <div class="content js-content">
         {% for job in data %}
         <a href="content/{{job.id}}">

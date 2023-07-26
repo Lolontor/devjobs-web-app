@@ -104,7 +104,6 @@ body.dark{
 
 .top{
   height: 120px;
-  /* background-color: var(--white); */
   border-bottom-left-radius: 70px;
   text-align: center;
   display: flex;
@@ -142,7 +141,7 @@ body.dark{
 .toggle_btn::before {
   content: '';
   position: absolute;
-  top: 2.5px;
+  top: 3px;
   left: 3px;
   width: 15px;
   height: 15px;
@@ -184,29 +183,21 @@ main{
 
 /* search bar form */
 .form{
+  position: relative;
   display: flex;
   background-color: var(--white);
-  border-radius: 5px;
-  justify-content: space-around;
-  align-items: center;
-  padding: .5em 1em;
+  border-radius: .3rem;
+  padding: .5rem;
 }
 
 .form.dark {
   background-color: var(--dark_blue);
 }
 
-.form .search{
-  display: flex;
-  align-items: center;
-  gap: .2rem;
- 
+.form.dark input[type="text"]{
+  color: var(--white);
 }
 
-.form .search p{
-  font-weight: bold;
-  font-size: 15px;
-}
 
 .form.dark p{
   color: var(--white);
@@ -217,12 +208,10 @@ main{
   outline: transparent;
   background-color: transparent;
   padding: .5em;
-  width: auto;
-  border-right: 2px solid var(--light_grey);
 }
 
 .form input[type="text"]::placeholder{
- font-size: 12px;
+ font-size: .8rem;
 }
 
 .form input[type="checkbox"]{
@@ -236,12 +225,90 @@ main{
 }
 
 .form img{
-  width: 16px;
+  width: .7rem;
+}
+
+/* desktop form css  */
+.sub-input,
+.checkbox-label{
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: .8rem;
+}
+
+.checkbox-label{
+  display: flex;
+  gap: 10px;
 }
 
 
+/* mobile form css  */
+.mobile-form{
+  display: none;
+}
 
-/* content  */
+/* mobile view search modal css  */
+
+.search-modal{
+ position: absolute;
+ background-color: var(--white);
+ top: 50%;
+ border-radius: .3rem;
+ display: flex;
+ flex-direction: column;
+ gap: .5rem;
+ z-index: 100;
+ width: 100%;
+}
+
+.overlay{
+  position: absolute;
+  border: none;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #0000004f;
+  z-index: 3;
+  display: none;
+}
+
+.search-modal div{
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px var(--gray);
+  padding: 1rem 2rem;
+}
+
+.search-modal label{
+  padding: .3rem 2rem;
+}
+
+.search-modal input[type="submit"]{
+  margin: 0 1.5rem 2rem 1.5rem;
+}
+
+body.dark .search-modal label,
+body.dark .search-modal {
+  background-color: var(--dark_blue);
+  color: var(--white);
+}
+
+body.dark input[type="text"]{
+  color: var(--white);
+}
+
+.show{
+  display: block;
+}
+
+.hidden{
+  display: none;
+}
+
+/* styles for index content  */
 .content{
  display: grid;
  gap: 55px;
@@ -316,6 +383,21 @@ main{
   height: 100px;
 }
 
+.company_info.dark button{
+  background-color: #303642;
+}
+
+.company_info.dark button a{
+  color: var(--white);
+}
+.company_info.dark button a:hover{
+  background-color: transparent;
+}
+
+.company_info.dark button:hover{
+  background-color: #696E76;
+}
+
 .company_details{
   background-color: var(--white);
   padding: 1rem;
@@ -328,6 +410,7 @@ main{
 
 .company_details.dark,
 .job_requirement.dark,
+.company_info.dark,
 footer.dark {
   background-color: var(--dark_blue);
 }
@@ -367,3 +450,114 @@ footer{
 
 
 /* responsive css for tablet view */
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .top{
+    background : url('/static/assets/tablet/bg-pattern-header.svg') no-repeat center center/ cover;
+  }
+  .content{
+    grid-template-columns: repeat(2, 1fr);
+   }
+  main{
+    width: 90%;
+  }
+  footer{
+    gap: 7rem;
+   }
+  
+}
+
+/* responsive css for mobile view  */
+@media (max-width: 480px){
+  .content{
+    grid-template-columns: 1fr;
+  }
+  .top{
+    border-radius: 0;
+    background : url('/static/assets/mobile/bg-pattern-header.svg') no-repeat center center/ cover;
+  }
+  .title_bar{
+    padding: 0 2rem 1.5rem 2rem;
+    justify-content: space-between;
+  }
+  .toggle_btn::before{
+    top: 3px;
+  }
+  .desktop-form{
+    display: none;
+  }
+  .mobile-form{
+    display: flex;
+    padding: 1rem 0;
+    justify-content: center;
+  }
+  .mobile-form img{
+    margin: 0 1rem;
+    cursor: pointer;
+  }
+  .mobile-form label img{
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+  }
+  .search-logo{
+    background-color: var(--violet);
+    display: inline;
+    padding: .5rem 0;
+    border-radius: .3rem;
+  }
+  .mobile-form #m-search-btn{
+    display: none;
+  }
+
+  body.dark .mobile-form{
+    background-color: var(--dark_blue);
+  }
+  body.dark .mobile-form div img{
+    color: var(--white);
+    filter: brightness(0) invert(1);
+  }
+  /* content-html styles  */
+ .company_info{
+  flex-direction: column;
+  background-color: var(--white);
+  position: relative;
+  padding: 3rem 1rem;
+ }
+ .company_info img{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: -1.5rem;
+  left: calc(100% - 58%);
+  border-radius: 10px;
+ }
+ .company_info button{
+  width: 60%;
+ }
+ .company_info .company_details{
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+ }
+
+ .company_info .company_details h3{
+  margin-bottom: 2rem;
+ }
+
+ .job_requirement .employer_details{
+  flex-direction: column;
+  
+ }
+ .country,
+ .job_title{
+  margin-top: 10px;
+ }
+ button{
+  margin: 1rem 0;
+  width: 100%;
+ }
+footer div{
+  display: none;
+}
+ 
+}

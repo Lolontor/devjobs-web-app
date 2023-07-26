@@ -12,18 +12,18 @@
     <header>
       <div class="top">
         <div class="title_bar">
-          <a href="{% url 'index' %}"><img src="{% static 'assets/desktop/logo.svg' %}" alt="" /></a>
+          <a href="{% url 'index' %}"><img src="{% static 'assets/desktop/logo.svg' %}" alt="devjob logo" /></a>
           <div class="toggle_items">
-            <img src="{% static 'assets/desktop/icon-sun.svg' %}" alt="" />
+            <img src="{% static 'assets/desktop/icon-sun.svg' %}" alt="sun icon" />
             <div class="toggle_btn js_toggle_btn"></div>
-            <img src="{% static 'assets/desktop/icon-moon.svg' %}" alt="">
+            <img src="{% static 'assets/desktop/icon-moon.svg' %}" alt="moon icon">
           </div>
         </div>
       </div>
     </header>
     <main class="main_content">
       <section class="company_info">
-        <img src="{{job.logo}}" alt="" style="background-color: {{job.logoBackground}};"/>
+        <img src="{{job.logo}}" alt="company logo" style="background-color: {{job.logoBackground}};"/>
         <div class="company_details">
           <div>
             <h3 class="h3">{{job.company}}</h3>
@@ -40,7 +40,7 @@
               <span>&#8226;</span>
               <span class="job_description">{{job.contract}}</span>
             </div>
-            <h3 class="job_title">{{job.position}}</h3>
+            <h3 class="h3">{{job.position}}</h3>
             <p class="country">{{job.location}}</p>
           </div>
           <button class="button button_one"><a href="{{job.apply}}">Apply Now</a></button>
@@ -49,7 +49,7 @@
           <p class="small_light_text">{{job.description}}</p>
         </div>
         <div class="detailed_job_requirement">
-          <h3 class="mg_tb">Requirement</h3>
+          <h3 class="mg_tb h3">Requirement</h3>
           <p class="small_light_text">
             {{job.requirements.content}}
             <ul class="small_light_text">
