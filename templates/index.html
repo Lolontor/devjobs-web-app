@@ -80,7 +80,7 @@
       </form>
       <!-- rendering list of devjobs  -->
       <div class="content js-content">
-        {% for job in data %}
+        {% for job in initial_data %}
         <a href="content/{{job.id}}">
           <div class="job_card js_card">
             <img
@@ -100,7 +100,9 @@
         </a>
         {% endfor %}
       </div>
-      <button class="button button_one center_btn">Load More</button>
+      {% if data|length > 6%}
+      <button class="button button_one center_btn js-load-more-btn">Load More</button>
+      {% endif %}
     </main>
     <script src="{% static '/js/app.js' %}"></script>
   </body>

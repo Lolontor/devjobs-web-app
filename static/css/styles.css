@@ -99,7 +99,12 @@ body{
 body.dark{
   background-color: var(--midnight);
 }
-
+body.dark div .job_card{
+  background-color: var(--dark_blue);
+}
+body.dark div .job_card p.job_title{
+  color: var(--white);
+}
 /* header */
 
 .top{

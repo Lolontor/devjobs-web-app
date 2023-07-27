@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('content/<str:pk>', views.content, name='content')
+    path('content/<str:pk>', views.content, name='content'),
+    path('loadmore/', views.loadmore, name='loadmore'),
     
 ]
