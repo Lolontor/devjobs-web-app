@@ -53,7 +53,7 @@ overlay.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const contentdiv = document.querySelector('.js-content');
-  console.log('hello there button clicked');
+  
 
   // Event delegation for the Load More button
   document.addEventListener('click', (event) => {
@@ -106,3 +106,41 @@ function createJobCard(job) {
   </a>`;
   return jobCard;
 };
+
+
+//search filter js
+document.querySelector('.jobSearchForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const filterBtn = document.querySelector(".js-filter-btn");
+  filterBtn.classList.add('hidden');
+  const formData = new FormData(event.target);
+
+  const title = formData.get('q');
+  const location = formData.get('location');
+  let jobtype = formData.get('jobtype');
+  //if statement to return a null value if checkbox is not checked
+  const checkboxbtn = document.getElementById('d-checkbox');
+  checkboxbtn.checked ? jobtype = 'full time' : jobtype = '';
+  fetch(`/searchfilter/?q=${title}&location=${location}&jobtype=${jobtype}`)
+    .then(response => response.json())  // Assuming the response is in JSON format
+    .then(data => {
+      if (data.length > 0) {
+        console.log('got some data');
+        let resultsHTML = '';
+        for (let job of data) {
+          console.log('in the for loop');
+          const jobCard = createJobCard(job);
+          resultsHTML += jobCard;
+        }
+        console.log('got the results');
+        document.querySelector('.js-content').innerHTML = resultsHTML;
+      } else {
+        console.log('no results');
+        document.querySelector('.js-content').innerHTML = '<h3>Search Results not found</h3>';
+      }
+    })
+    .catch((error) => {
+      console.log('could not make it');
+      console.error('Error fetching more data', error);
+    });
+});

@@ -25,7 +25,7 @@
     </header>
     <main>
       <!-- desktop and tablet search form  -->
-      <form action="" class="form desktop-form">
+      <form action="" class="form desktop-form jobSearchForm">
         <div class="sub-input">
           <img
             src="{% static 'assets/desktop/icon-search.svg' %}"
@@ -34,22 +34,23 @@
           <input
             type="text"
             placeholder="Filter by title, companies, expertise"
+            name="q"
           />
         </div>
         <div class="sub-input">
           <img src="{% static 'assets/desktop/icon-location.svg' %}" alt="" />
-          <input type="text" placeholder="Filter by location" />
+          <input type="text" placeholder="Filter by location" name="location" />
         </div>
         <label for="d-checkbox" class="checkbox-label">
-          <input type="checkbox" name="" id="d-checkbox" />
+          <input type="checkbox" name="jobtype" id="d-checkbox" />
           Full Time Only
           <input type="submit" value="Search" class="button button_one" />
         </label>
       </form>
       <!-- mobile search form  -->
-      <form action="" class="form mobile-form">
+      <form action="" class="form mobile-form jobSearchForm">
         <div>
-          <input type="text" placeholder="Enter job desc..." />
+          <input type="text" name="q" placeholder="Enter job desc..." />
           <img
             src="{% static 'assets/mobile/icon-filter.svg'%}"
             alt="filter icon"
@@ -69,10 +70,19 @@
               src="{% static 'assets/desktop/icon-location.svg' %}"
               alt="location icon"
             />
-            <input type="text" placeholder="Filter by location" />
+            <input
+              type="text"
+              name="location"
+              placeholder="Filter by location"
+            />
           </div>
           <label for="m-checkbox">
-            <input type="checkbox" name="" id="m-checkbox" />
+            <input
+              type="checkbox"
+              value="full time"
+              name="jobtype"
+              id="m-checkbox"
+            />
             Full Time Only
           </label>
           <input type="submit" value="Search" class="button button_one" />
@@ -101,7 +111,9 @@
         {% endfor %}
       </div>
       {% if data|length > 6%}
-      <button class="button button_one center_btn js-load-more-btn">Load More</button>
+      <button class="button button_one center_btn js-load-more-btn">
+        Load More
+      </button>
       {% endif %}
     </main>
     <script src="{% static '/js/app.js' %}"></script>

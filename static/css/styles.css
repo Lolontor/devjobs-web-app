@@ -247,6 +247,10 @@ main{
   gap: 10px;
 }
 
+body.dark label.checkbox-label{
+  color: var(--white);
+}
+
 
 /* mobile form css  */
 .mobile-form{
@@ -288,7 +292,7 @@ main{
 }
 
 .search-modal label{
-  padding: .3rem 2rem;
+  padding: .3rem 1rem;
 }
 
 .search-modal input[type="submit"]{
@@ -301,7 +305,7 @@ body.dark .search-modal {
   color: var(--white);
 }
 
-body.dark input[type="text"]{
+body.dark input[type="search"]{
   color: var(--white);
 }
 
@@ -493,11 +497,11 @@ footer{
   }
   .mobile-form{
     display: flex;
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
     justify-content: center;
   }
   .mobile-form img{
-    margin: 0 1rem;
+    margin: 0 .6rem;
     cursor: pointer;
   }
   .mobile-form label img{
